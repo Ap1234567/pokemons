@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Pokemon</title>
+        <style>
+          .all{
+            display: flex;
+            justify-content: space-around;
+          }
+        </style>
+    </head>
+    <body>
+      <h1>{{name | title}}</h1>
+      <form action="/" method="GET">
+        <label for="pokemon">Pokemon Name:</label>
+        <input id="pokemon" name="pokemon" type="text" placeholder="pokemon name">
+        <button type="submit">Submit</button>
+      </form>
+     {% if sprites %}
+        <div class="all">
+        {% for name, sprite_url in sprites.items() %}
+        <div class="one">
+        <h2>{{name}}</h2><br>
+        <img src="{{sprite_url}}" alt="{{name | title}} image">
+        </div>
+      {% endfor %}
+    {% endif %}
+    {% if wrong_name %}
+    <h3>There's no pokemon by the name '{{wrong_name}}'. Please try again.</h3>
+  {% endif %}
+  </div>
+    </body>
+</html>
